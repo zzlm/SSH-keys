@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.CatDao">
+
+	<!-- 开启二级缓存 -->
+	<cache type="com.redis.RedisCache"></cache>
+	
+	
+	<select id="selectAll" resultType="com.model.Cat">
+	
+		select *from cat
+	
+	</select>
+	
+	<select id="delete">
+	
+		delete from cat where id=#{id}
+	
+	</select>
+	
+	<select id="update">
+		
+		update cat set name=#{name},color=#{color},sex=#{sex} where id=#{id}
+	
+	</select>
+	
+	<select id="selectById" resultType="com.model.Cat">
+		
+		select *from cat where id=#{id}
+	
+	</select>
+	
+	<select id="add">
+	
+		insert into cat values (0,#{name},#{color},#{sex})
+	
+	</select>
+	
+</mapper>
